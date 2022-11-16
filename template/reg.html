@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- font awesome cdn link  -->
+  <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/reg.css'%}" />
+  <title>Electronics Service|Register</title>
+</head>
+
+<body>
+  <div class="login">
+    <img class="img" src="{% static 'img/default.png' %}">
+    <div class="title">Registration</div>
+    <h1 class="error" id="error"></h1>
+    {% for message in messages %}
+    <h1 class="error">{{ message }}</h1>
+    {% endfor %}
+    <form action="#" method="post">
+      {% csrf_token %}
+      <div class="fields">
+        <div class="username">
+          <i class="fa-solid fa-user"></i>
+          {{form.username}}
+        </div>
+        <div class="flex">
+          <div class="password">
+            <i class="fa-solid fa-user"></i>
+            {{form.first_name}}
+          </div>
+          <div class="password">
+            <i class="fa-solid fa-user"></i>
+            {{form.last_name}}
+          </div>
+        </div>
+        <div class="password">
+          <i class="fa-solid fa-envelope"></i>
+          {{form.email}}
+        </div>
+
+        <div class="password">
+          <i class="fa-solid fa-key"></i>
+          {{form.password1}}
+        </div>
+        <div class="password">
+          <i class="fa-solid fa-key"></i>
+          {{form.password2}}
+        </div>
+
+
+      </div>
+      <button type="submit"  onclick="check()" class="signin-button">Register</button>
+    </form>
+    <div class="link">
+      Already have an account?<a href="/logins"> Sign In </a>
+    </div>
+
+  </div>
+  <script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'First Name';
+    form_fields[3].placeholder = 'Last Name';
+    form_fields[4].placeholder = 'Email ID';
+    form_fields[5].placeholder = 'Password';
+    form_fields[6].placeholder = 'Confirm Password';
+
+    function check(){
+      if(form_fields[5].value!=form_fields[6].value){
+        alert("Those passwords didn't match. Try again")
+      }
+    }
+  </script>
+
+</body>
+
+</html>

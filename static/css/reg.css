@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-weight: 700;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  background: rgb(236, 246, 245);
+}
+
+.login {
+  width: 675px;
+  height: 610px;
+  padding: 33px 49px 35px 49px;
+  border-radius: 40px;
+  background-color: #d4e7f5;
+  box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #fff;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: 43%;
+  box-shadow: 0px 0px 2px#5f5f5f, 0px 0px 0px 5px#ecf0f3, 8px 8px 15px#a7aaaf -8px -8px 15px #fff;
+}
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  padding-top: 1px;
+  letter-spacing: 0.5px;
+}
+
+.fields {
+  width: 100%;
+  padding: 19px 5px 5px 5px;
+}
+
+.fields input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 17px;
+  color: #555;
+  padding: 13px 10px 10px 5px;
+}
+
+.username,
+.password {
+  margin-bottom: 18px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px#cbced1, inset -8px -8px 8px #fff;
+}
+
+i {
+  height: 22px;
+  margin: 0 10px -3px 25px;
+}
+
+.signin-button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  background-color: #001763;
+  box-shadow: 3px 3px 8px#b1b1b1, -3px -3px 8px #fff;
+
+}
+
+.signin-button:hover {
+  background-color: #5845ea;
+}
+
+.signin-button:active {
+  background-color: #050505;
+}
+
+.link {
+  padding-top: 13px;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.link a {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.flex {
+  display: flex;
+  gap: 15px;
+}
+
+.error {
+  font-size: 12px;
+  margin-left: 7.5rem;
+}
+
+
+@media (max-width: 754px) {
+  html {
+    font-size: 60%;
+  }
+
+  .login {
+    width: 600px;
+    height: 630px;
+  }
+
+  .username i {
+    font-size: 1.5rem;
+  }
+
+  .signin-button {
+    margin-top: 1.5rem;
+    font-size: 17px;
+  }
+
+  .flex input {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 70%;
+  }
+
+  .fields i {
+    font-size: 1rem;
+  }
+  .flex {
+    display: inline;
+  }
+
+  .login {
+    width: 400px;
+    height: 630px;
+  }
+
+  .title {
+    margin-left: 3.5rem;
+    font-size: 20px;
+  }
+
+  .signin-button {
+    margin-top: -0.5rem;
+    height: 35px;
+    width: 200px;
+    margin-left: 4rem;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 70%;
+  }
+
+  .fields i {
+    font-size: 1rem;
+  }
+  .flex {
+    display: inline;
+  }
+
+  .login {
+    width: 350px;
+    height: 630px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .title {
+    margin-left: 3.5rem;
+    font-size: 20px;
+  }
+
+  .signin-button {
+    margin-top: -0.5rem;
+    height: 35px;
+    width: 200px;
+    margin-left: 4rem;
+    font-size: 13px;
+  }
+}

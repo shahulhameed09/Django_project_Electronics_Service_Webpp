@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+
+    <title>Electronics Service|Booking</title>
+    {% load static %}
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/stylo.css'%}">
+    <link rel="stylesheet" href="{% static 'css/appointment.css'%}">
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="#" class="logo"> <i class="fas fa-tools"></i> electro </a>
+
+            <div class="links">
+                {% if user.is_authenticated %}
+                {% if request.user.first_name == "" %}
+                <a>welcome, {{request.user.username}}</a>
+                {% else %}
+                <a>welcome, {{request.user.first_name}}</a>
+                {% endif %}
+                {% endif %}
+                <a href="/">home</a>
+                <a href="/#about">about</a>
+                <a href="/#services">services</a>
+                <a href="/#gallery">gallery</a>
+                <a href="/#reviews">Reviews</a>
+                {% if user.is_authenticated %}
+                <a href="/bookings">Book</a>
+                <a href="#">My Appointments</a>
+                {% endif %}
+                <a href="/#contact">contact</a>
+                {% if user.is_authenticated %}
+                <a href="/logoutuser"><i class="fa-solid fa-right-from-bracket"></i></a>
+                {% else %}
+                <a href="/logins"><i class="fa-solid fa-right-to-bracket"></i></a>
+                {% endif %}
+            </div>
+
+            {% if user.is_authenticated %}
+            {% if user.profile.image.url == "" %}
+            <a href="/myprofile"><img class="pro" src="{% static 'img/default.png' %}" height="48px"
+                    width="48px"></a>
+            {% else %}
+            <a href="/myprofile"><img class="pro" src="{{user.profile.image.url}}" height="48px" width="48px"></a>
+            {% endif %}
+            {% else %}
+            <img class="pro" src="{% static 'img/default.png' %}" height="48px" width="48px">
+            {% endif %}
+
+            <div id="menu-btn" class="fa fa-bars"></div>
+
+        </nav>
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section strats -->
+    <h1>My Appointments</h1>
+    
+    <div class="space">
+        {% for i in form reversed %}
+        {% if i.connect.username == user.username %}
+        <div class="container">
+            <form>
+                <table>
+                    <tr>
+                        <td> <b> Request Type</b></td>
+                        <td class="rg">:   {{i.request_Type}}</td>
+                    </tr>
+                    <tr>
+                        <td> <b> Name</b></td>
+                        <td class="rg">:  {{i.customer_name}}</td>
+                    </tr>
+                    <tr>
+                        <td> <b> Phone Number</b></td>
+                        <td class="rg">:   {{i.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td> <b> Appiontment Date</b></td>
+                        <td class="rg">:   {{i.date}}</td>
+                        {% if i.cdate.date <= i.date %}
+                        <tr><td><b>Service Status</b></td><td class="rg" style="color: red;">: <b id="pen"> pending...</b></td></tr>
+                        {% else %}
+                        <tr><td><b>Service Status</b></td><td class="rg" style="color: rgb(5, 201, 5); ">: <b> done</b></td></tr>
+                        {% endif %}
+                    </tr>
+                    <h3>{{i.cdate}}</h3>
+                </table>
+                {% if i.cdate.date <= i.date %}
+                <button id="del" class="bb"><b> <a href="{% url 'delete_items' i.id %}">Delete</a></b></button>
+                {% endif %}
+                <button class="bb2"><b> <a href="{% url 'show' i.id %}">View</a></b></button>
+            </form>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
+    <!-- home section ends  -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a class="link" href="/"> <i class="fas fa-angle-right"></i> Home</a>
+                <a class="link" href="/#about"> <i class="fas fa-angle-right"></i> About</a>
+                <a class="link" href="/#services"> <i class="fas fa-angle-right"></i> Services</a>
+                <a class="link" href="/#gallery"> <i class="fas fa-angle-right"></i> Gallery</a>
+                <a class="link" href="/#reviews"> <i class="fas fa-angle-right"></i> Reviews</a>
+                <a class="link" href="/#contact"> <i class="fas fa-angle-right"></i> Contact</a>
+            </div>
+
+            <div class="box">
+                <h3>opening hours</h3>
+                <p> <span>monday :</span> 10:00am to 00:09pm </p>
+                <p> <span>tuesday :</span> 10:00am to 00:09pm </p>
+                <p> <span>wednesday :</span> 10:00am to 00:09pm </p>
+                <p> <span>thursday :</span> 10:00am to 00:09pm </p>
+                <p> <span>friday :</span> 10:00am to 00:09pm </p>
+                <p> <span>saturday :</span> 10:00am to 00:09pm </p>
+                <p> <span>sunday :</span> closed </p>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#" class="link"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#" class="link"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#" class="link"> <i class="fas fa-envelope"></i> shahul66649@gmail.com </a>
+                <a href="#" class="link"> <i class="fas fa-map"></i> Bangalore, india - 400104 </a>
+            </div>
+
+            <div class="box">
+                <h3>newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <form action="/subscrib" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" class="email">
+                    <input type="submit" value="subscribe" class="btn">
+                </form>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="credit"> Login as <a href="/admin"><span>admin</span></a></div>
+
+    </section>
+
+    <!-- footer section ends  -->
+
+    <script src="{% static 'js/scriptt.js'%}"></script>
+
+    <!-- <script>
+        var pen = document.getElementById('pen');
+        if(pen.textContent=="pending..."){
+            document.getElementById('del').hidden=false;
+        }else{
+            document.getElementById('del').hidden=true;
+        }
+    </script>  -->
+
+</body>
+
+</html>

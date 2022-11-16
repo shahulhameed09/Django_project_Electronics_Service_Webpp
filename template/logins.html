@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load static %}
+  <!-- font awesome cdn link  -->
+  <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/logins.css'%}" />
+  <title>Electronics Service|Login</title>
+</head>
+
+<body>
+
+  <div class="login">
+    <img class="img" src="{% static 'img/default.png' %}">
+    <div class="title">Login To Electro</div>
+    {% for message in messages %}
+    <p style="font-size: 12px; color:red; margin-left:2.5rem;">{{ message }}</p>
+    {% endfor %}
+    <form action="#" method="post" style="margin-top: 1px ;">
+      {% csrf_token %}
+      <div class="fields">
+        <div class="username">
+          <i class="fa-solid fa-user"></i>
+          <input type="username" name="names" placeholder="Username" class="user-input" />
+        </div>
+        <div class="password">
+          <i class="fa-solid fa-key"></i>
+          <input type="password" name="pass" class="pass-input" placeholder="Password" />
+        </div>
+      </div>
+      <button type="submit" class="signin-button">Login</button>
+    </form>
+    <div class="link">
+      Don't have an account?<a href="/reg"> Sign Up </a>
+    </div>
+    <hr>
+    <a href="{% url 'social:begin' 'google-oauth2' %}" style="text-decoration: none;"><button type="submit"
+        class="button"><img class="google" src="{% static 'img/google.png' %}" height="20px" width="20px">Login With
+        Google</button></a>
+  </div>
+</body>
+
+</html>

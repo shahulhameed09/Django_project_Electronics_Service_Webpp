@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+*{
+  font-family: 'Montserrat', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:25px;
+  min-height: 100vh;
+  background-color: rgb(177, 231, 236);
+  margin-top: 7rem;
+}
+
+.container form{
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  padding: 80px 40px 40px;
+  padding-top: 2rem;
+  background: rgb(236, 246, 245);
+  border-radius: 10px;
+  color: rgb(9, 1, 1);
+  box-shadow: 0 9px 35px rgba(0,0,0,0.5);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.container form::before {
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.025);
+  transform: skewX(-26deg);
+  transform-origin: bottom;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.container form .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap:15px;
+}
+
+.container form .row .col{
+  flex:1 1 250px;
+}
+
+.container form .title{
+  font-size: 35px;
+  color:rgb(0, 0, 0);
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.container form .row .col .inputBox{
+  margin:15px 0;
+}
+
+.container form .row .col .inputBox span{
+  margin-bottom: 10px;
+  display: block;
+}
+
+.container form .row .col .inputBox input,
+.container form .row .col .inputBox textarea,
+.container form .row .col .inputBox select,
+.container form .row .col .inputBox option{
+  width: 100%;
+  padding:10px 15px;
+  font-size: 15px;
+  text-transform: none;
+  background-color: transparent;
+  box-shadow: 0 1px 3px black;
+  background-color: #6b2ecc;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 10px;
+}
+
+.container form .row .col .inputBox input::placeholder,
+.container form .row .col .inputBox textarea::placeholder,
+.container form .row .col .inputBox select::placeholder,
+.container form .row .col .inputBox option::placeholder{
+  color: rgb(0, 0, 0);
+}
+
+.container form .row .col .inputBox input:focus, 
+.container form .row .col .inputBox textarea:focus,
+.container form .row .col .inputBox select:focus,
+.container form .row .col .inputBox option:focus{
+  box-shadow: 0 1.5px 7px rgb(0, 0, 0);
+}
+
+.container form .row .col .inputBox input:hover,
+.container form .row .col .inputBox textarea:hover,
+.container form .row .col .inputBox select:hover,
+.container form .row .col .inputBox option:hover{
+  box-shadow: 0 1.5px 7px rgb(0, 0, 0);
+}
+
+.container form .row .col .flex{
+  display:flex;
+  gap:15px;
+}
+
+.container form .row .col .flex .inputBox{
+  margin-top: 5px;
+}
+
+.container form .row .col .inputBox img{
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+
+.container form .submit-btn{
+  width: 100%;
+  padding:12px;
+  font-size: 17px;
+  color:#fff;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+  background: rgb(22, 19, 62);}
+
+.container form .submit-btn::placeholder{
+  color: rgb(116, 210, 244);
+}
+
+.container form .submit-btn:hover{
+  background: #160581;
+  box-shadow: 0 5px 15px black;
+}
+
+.formerror{
+  padding-top: 6px;
+  margin-left: 2rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 590px) {
+  .container form {
+    width: 100%;
+  }
+
+}

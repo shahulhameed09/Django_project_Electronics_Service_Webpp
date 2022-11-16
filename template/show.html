@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+
+    <title>Electronics Service|Booking</title>
+    {% load static %}
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/stylo.css'%}">
+    <link rel="stylesheet" href="{% static 'css/booking.css'%}">
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="#" class="logo"> <i class="fas fa-tools"></i> electro </a>
+
+            <div class="links">
+                {% if user.is_authenticated %}
+                {% if request.user.first_name == "" %}
+                <a>welcome, {{request.user.username}}</a>
+                {% else %}
+                <a>welcome, {{request.user.first_name}}</a>
+                {% endif %}
+                {% endif %}
+                <a href="/">home</a>
+                <a href="/#about">about</a>
+                <a href="/#services">services</a>
+                <a href="/#gallery">gallery</a>
+                <a href="/#reviews">Reviews</a>
+                {% if user.is_authenticated %}
+                <a href="#">Book</a>
+                <a href="/appointment">My Appointments</a>
+                {% endif %}
+                <a href="/#contact">contact</a>
+                {% if user.is_authenticated %}
+                <a href="/logoutuser"><i class="fa-solid fa-right-from-bracket"></i></a>
+                {% else %}
+                <a href="/logins"><i class="fa-solid fa-right-to-bracket"></i></a>
+                {% endif %}
+            </div>
+
+            {% if user.is_authenticated %}
+            {% if user.profile.image.url == "" %}
+            <a href="/myprofile"><img class="pro" src="{% static 'img/default.png' %}" height="48px"
+                    width="48px"></a>
+            {% else %}
+            <a href="/myprofile"><img class="pro" src="{{user.profile.image.url}}" height="48px" width="48px"></a>
+            {% endif %}
+            {% else %}
+            <img class="pro" src="{% static 'img/default.png' %}" height="48px" width="48px">
+            {% endif %}
+
+            <div id="menu-btn" class="fa fa-bars"></div>
+
+        </nav>
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section strats -->
+
+    <div class="container">
+        <form>
+            <h3 class="title">Appointment Details</h3>
+            <b>
+                <table class="table">
+                    <tr>
+                        <td>Name</td>
+                        <td class="rg">: {{show.customer_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email ID</td>
+                        <td class="rg">: {{show.email_ID}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td>
+                        <td class="rg">: {{show.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td class="rg">: {{show.address}}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td class="rg">: {{show.city}}</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td class="rg">: {{show.state}}</td>
+                    </tr>
+                    <tr>
+                        <td>PIN Code</td>
+                        <td class="rg">: {{show.pin_code}}</td>
+                    </tr>
+                    <tr>
+                        <td>Request Type</td>
+                        <td class="rg">: {{show.request_Type}}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td class="rg">: {{show.description}}</td>
+                    </tr>
+
+                    {% if show.cdate.date <= show.date %} <tr>
+                        <td><b>Service Status</b></td>
+                        <td class="rg">: <b> pending...</b></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><b>Service Status</b></td>
+                            <td class="rg">: <b> done</b></td>
+                        </tr>
+                        {% endif %}
+                </table>
+            </b>
+            <button class="submit-btn"><a href="/appointment">close</a></button>
+        </form>
+
+    </div>
+
+
+    <!-- home section ends  -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a class="link" href="/"> <i class="fas fa-angle-right"></i> Home</a>
+                <a class="link" href="/#about"> <i class="fas fa-angle-right"></i> About</a>
+                <a class="link" href="/#services"> <i class="fas fa-angle-right"></i> Services</a>
+                <a class="link" href="/#gallery"> <i class="fas fa-angle-right"></i> Gallery</a>
+                <a class="link" href="/#reviews"> <i class="fas fa-angle-right"></i> Reviews</a>
+                <a class="link" href="/#contact"> <i class="fas fa-angle-right"></i> Contact</a>
+            </div>
+
+            <div class="box">
+                <h3>opening hours</h3>
+                <p> <span>monday :</span> 10:00am to 00:09pm </p>
+                <p> <span>tuesday :</span> 10:00am to 00:09pm </p>
+                <p> <span>wednesday :</span> 10:00am to 00:09pm </p>
+                <p> <span>thursday :</span> 10:00am to 00:09pm </p>
+                <p> <span>friday :</span> 10:00am to 00:09pm </p>
+                <p> <span>saturday :</span> 10:00am to 00:09pm </p>
+                <p> <span>sunday :</span> closed </p>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#" class="link"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#" class="link"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#" class="link"> <i class="fas fa-envelope"></i> shahul66649@gmail.com </a>
+                <a href="#" class="link"> <i class="fas fa-map"></i> Bangalore, india - 400104 </a>
+            </div>
+
+            <div class="box">
+                <h3>newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <form action="/subscrib" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" class="email">
+                    <input type="submit" value="subscribe" class="btn">
+                </form>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="credit"> Login as <a href="/admin"><span>admin</span></a></div>
+
+    </section>
+
+    <!-- footer section ends  -->
+
+    <script src="{% static 'js/scriptt.js'%}"></script>
+    <style>
+        .container form {
+            padding-left: 7rem;
+
+        }
+
+        .table {
+            font-size: 18px;
+            height: 150px;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .rg {
+            padding-left: 4rem;
+        }
+
+        .container form .submit-btn {
+            float: right;
+            width: 17%;
+        }
+
+        .container form .submit-btn a {
+            text-decoration: none;
+            color: aliceblue;
+        }
+
+        .container form .title {
+            font-size: 30px;
+        }
+    </style>
+
+</body>
+
+</html>

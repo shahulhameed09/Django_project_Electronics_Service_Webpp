@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+
+    <title>Electronics Service|Booking</title>
+    {% load static %}
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/stylo.css'%}">
+    <link rel="stylesheet" href="{% static 'css/booking.css'%}">
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="#" class="logo"> <i class="fas fa-tools"></i> electro </a>
+
+            <div class="links">
+                {% if user.is_authenticated %}
+                {% if request.user.first_name == "" %}
+                <a>welcome, {{request.user.username}}</a>
+                {% else %}
+                <a>welcome, {{request.user.first_name}}</a>
+                {% endif %}
+                {% endif %}
+                <a href="/">home</a>
+                <a href="/#about">about</a>
+                <a href="/#services">services</a>
+                <a href="/#gallery">gallery</a>
+                <a href="/#reviews">Reviews</a>
+                {% if user.is_authenticated %}
+                <a href="#">Book</a>
+                <a href="/appointment">My Appointments</a>
+                {% endif %}
+                <a href="/#contact">contact</a>
+                {% if user.is_authenticated %}
+                <a href="/logoutuser"><i class="fa-solid fa-right-from-bracket"></i></a>
+                {% else %}
+                <a href="/logins"><i class="fa-solid fa-right-to-bracket"></i></a>
+                {% endif %}
+            </div>
+
+            {% if user.is_authenticated %}
+            {% if user.profile.image.url == "" %}
+            <a href="/myprofile"><img class="pro" src="{% static 'img/default.png' %}" height="48px"
+                    width="48px"></a>
+            {% else %}
+            <a href="/myprofile"><img class="pro" src="{{user.profile.image.url}}" height="48px" width="48px"></a>
+            {% endif %}
+            {% else %}
+            <img class="pro" src="{% static 'img/default.png' %}" height="48px" width="48px">
+            {% endif %}
+
+            <div id="menu-btn" class="fa fa-bars"></div>
+
+        </nav>
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section strats -->
+
+    <div class="container">
+        <form action="#" method="post" onsubmit="book()">
+            {% csrf_token %}
+            <a href="/"><i class="fas fa-times" style="color: #000000; font-size:2rem; float:right;"></i></a>
+            <h3 class="title">REQUEST AN APPOINTMENT</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="inputBox">
+                        {{form.customer_name}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.email_ID}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.phone_number}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.address}}
+                    </div>
+                    <div class="flex">
+                        <div class="inputBox">
+                            {{form.city}}
+                        </div>
+                        <div class="inputBox">
+                            {{form.state}}
+                        </div>
+                        <div class="inputBox">
+                            {{form.pin_code}}
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        {{form.request_Type}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.description}}
+                    </div>
+
+                    <div class="flex">
+                        <div class="inputBox">
+                            {{form.date}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="SUBMIT REQUEST" class="submit-btn"><br><br>
+        </form>
+
+    </div>
+
+
+    <!-- home section ends  -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a class="link" href="/"> <i class="fas fa-angle-right"></i> Home</a>
+                <a class="link" href="/#about"> <i class="fas fa-angle-right"></i> About</a>
+                <a class="link" href="/#services"> <i class="fas fa-angle-right"></i> Services</a>
+                <a class="link" href="/#gallery"> <i class="fas fa-angle-right"></i> Gallery</a>
+                <a class="link" href="/#reviews"> <i class="fas fa-angle-right"></i> Reviews</a>
+                <a class="link" href="/#contact"> <i class="fas fa-angle-right"></i> Contact</a>
+            </div>
+
+            <div class="box">
+                <h3>opening hours</h3>
+                <p> <span>monday :</span> 10:00am to 00:09pm </p>
+                <p> <span>tuesday :</span> 10:00am to 00:09pm </p>
+                <p> <span>wednesday :</span> 10:00am to 00:09pm </p>
+                <p> <span>thursday :</span> 10:00am to 00:09pm </p>
+                <p> <span>friday :</span> 10:00am to 00:09pm </p>
+                <p> <span>saturday :</span> 10:00am to 00:09pm </p>
+                <p> <span>sunday :</span> closed </p>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#" class="link"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#" class="link"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#" class="link"> <i class="fas fa-envelope"></i> shahul66649@gmail.com </a>
+                <a href="#" class="link"> <i class="fas fa-map"></i> Bangalore, india - 400104 </a>
+            </div>
+
+            <div class="box">
+                <h3>newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <form action="/subscrib" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" class="email">
+                    <input type="submit" value="subscribe" class="btn">
+                </form>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="credit"> Login as <a href="/admin"><span>admin</span></a></div>
+
+    </section>
+
+    <!-- footer section ends  -->
+
+    <script src="{% static 'js/scriptt.js'%}"></script>
+    <script>
+        function book() {
+            alert("Success! Your submission has been received. If you need immediate assistance, please contact us at 6364074063");
+        }
+
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Name';
+        form_fields[2].placeholder = 'Email ID';
+        form_fields[3].placeholder = 'Phone Number';
+        form_fields[4].placeholder = 'Address';
+        form_fields[5].placeholder = 'City';
+        form_fields[6].placeholder = 'State';
+        form_fields[7].placeholder = 'PIN CODE';
+        document.getElementById('id_description').placeholder = "Description";
+        form_fields[8].placeholder = 'YYYY-MM-DD';
+
+    </script>
+</body>
+
+</html>

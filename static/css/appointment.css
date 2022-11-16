@@ -1,0 +1,68 @@
+@import url(booking.css);
+
+.container{
+    padding:25px;
+    min-height: 10vh;
+    margin-top: 2rem;
+}
+
+.container form{
+    padding-left: 1.8rem;
+    padding-top: 1.6rem;
+    margin-top: 2px;
+    padding-bottom: 1.4rem;
+    padding-right: 1.5rem;
+}
+
+.space{
+    margin-top: 2rem;
+    margin-bottom: 19rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(30rem, 1fr))[auto-fit];
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    gap: 0.1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+h1{
+    text-align: center;
+    margin-top: 12rem;
+    font-size: 4rem;
+}
+
+table{
+    font-size: 12px;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.rg{
+    padding-left: 2rem;
+}
+
+.bb2,.bb{
+    font-size: 10px;
+    margin-top: 2rem;
+    padding: 4px 10px 4px 10px;
+    float: right;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    background: rgb(236, 146, 200);
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.bb2{
+    margin-right: 1rem;
+}
+
+.bb:hover,
+.bb2:hover,
+.bb2 a:hover,
+.bb a:hover{
+    background: #160581;
+    box-shadow: 0 2px 8px black;
+    color: rgb(195, 227, 255);
+}

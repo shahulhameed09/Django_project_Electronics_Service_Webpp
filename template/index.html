@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Electronics Service</title>
+   {% load static %}
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'css/stylo.css'%}">
+
+</head>
+
+<body>
+   <!-- header section starts  -->
+   <header class="header">
+
+      <nav class="navbar">
+
+         <a href="#" class="logo"> <i class="fas fa-tools"></i> electro </a>
+
+         <div class="links">
+            {% if user.is_authenticated %}
+            {% if request.user.first_name == "" %}
+            <a>welcome, {{request.user.username}}</a>
+            {% else %}
+            <a>welcome, {{request.user.first_name}}</a>
+            {% endif %}
+            {% endif %}
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#services">services</a>
+            <a href="#gallery">gallery</a>
+            <a href="#reviews">Reviews</a>
+            {% if user.is_authenticated %}
+            <a href="/bookings">Book</a>
+            <a href="/appointment">My Appointments</a>
+            {% endif %}
+            <a href="#contact">contact</a>
+            {% if user.is_authenticated %}
+            <a href="/logoutuser"><i class="fa-solid fa-right-from-bracket"></i></a>
+            {% else %}
+            <a href="/logins"><i class="fa-solid fa-right-to-bracket"></i></a>
+            {% endif %}
+         </div>
+
+         {% if user.is_authenticated %}
+         {% if user.profile.image.url == "" %}
+         <a href="/myprofile"><img class="pro" src="{% static 'img/default.png' %}" height="48px" width="48px"></a>
+         {% else %}
+         <a href="/myprofile"><img class="pro" src="{{user.profile.image.url}}" height="48px" width="48px"></a>
+         {% endif %}
+         {% else %}
+         <img class="pro" src="{% static 'img/default.png' %}" height="48px" width="48px">
+         {% endif %}
+
+         <div id="menu-btn" class="fa fa-bars"></div>
+
+      </nav>
+   </header>
+
+   <!-- header section ends -->
+
+   <!-- home section starts  -->
+
+   <section class="home" id="home">
+      <div class="image">
+         <img src="{% static 'images/home-img.svg'%}" alt="">
+      </div>
+
+      <div class="content">
+         <h3>Why fix it yourself? Leave it to the pros.</h3>
+         <p>Our technicians are highly courteous and trained with multiple years of industry experience. Highest quality
+            spare parts are used for all our jobs.</p>
+         <a href="#about" class="btn">get started</a>
+      </div>
+
+   </section>
+
+   <!-- home section ends -->
+
+   <section class="gap"></section>
+
+   <!-- about section starts  -->
+
+   <section class="about" id="about">
+
+      <div class="content">
+         <h3>best quality Repair services</h3>
+         <p>Welcome to Electronics Services we are one of the leading home appliance service providers in all over
+            India. Our company provides a full range of services for the repair of household appliances of almost all
+            brands and models of both domestic and imported production.</p>
+
+         <p> We offering complete repairing services for various electronic items such as Laptops, Smartphone, Multi
+            Media, Wifi Router, Projector and many more.</p>
+
+         <a href="#services" class="btn">read more</a>
+      </div>
+
+      <div class="image">
+         <img src="{% static 'images/about-img.svg'%}" alt="">
+      </div>
+
+   </section>
+
+   <!-- about section ends -->
+
+   <!-- services section starts  -->
+
+   <section class="services" id="services">
+
+      <h1 class="heading"> our <span>services</span> </h1>
+
+      <div class="box-container">
+
+         <div class="box">
+            <img src="{% static 'images/service-1.svg'%}" alt="">
+            <h3>computer repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+         </div>
+
+         <div class="box">
+            <img src="{% static 'images/service-2.svg'%}" alt="">
+            <h3>laptop repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="{% static 'images/service-3.svg'%}" alt="">
+            <h3>smartphone repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="{% static 'images/service-4.svg'%}" alt="">
+            <h3>game console repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="{% static 'images/service-5.svg'%}" alt="">
+            <h3>multi media repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="{% static 'images/service-6.svg'%}" alt="">
+            <h3>smartwatch repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/projector-306-834622.png"
+               alt="Projector Icon" width="80">
+            <h3>Projector repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/tv-1817148-1538016.png"
+               srcset="https://cdn.iconscout.com/icon/free/png-512/tv-1817148-1538016.png 2x" alt="Tv Icon" width="80">
+            <h3>tv repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+
+         <div class="box">
+            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/wifi-router-2465790-2075281.png"
+               srcset="https://cdn.iconscout.com/icon/premium/png-512-thumb/wifi-router-2465790-2075281.png 2x"
+               alt="Wifi Router Icon" width="80">
+            <h3>wifi Router repair</h3>
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, asperiores.</p> -->
+            {% if user.is_authenticated %}
+            <a href="/bookings"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% else %}
+            <a href="/logins"> <button class="bttn"> <b>Book Now</b></button></a>
+            {% endif %}
+
+         </div>
+      </div>
+
+   </section>
+
+   <!-- services section ends -->
+
+   <!-- gallery section starts  -->
+
+   <section class="gallery" id="gallery">
+
+      <h1 class="heading"> our <span>gallery</span> </h1>
+
+      <div class="gallery-container">
+
+         <a class="box" href="{% static 'images/g-img-1.jpg'%}"><img src="{% static 'images/g-img-1.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-2.jpg'%}"><img src="{% static 'images/g-img-2.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-8.jpg'%}"><img src="{% static 'images/g-img-8.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-4.jpg'%}"><img src="{% static 'images/g-img-4.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-5.jpg'%}"><img src="{% static 'images/g-img-5.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-6.jpg'%}"><img src="{% static 'images/g-img-6.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-7.jpg'%}"><img src="{% static 'images/g-img-7.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-3.jpg'%}"><img src="{% static 'images/g-img-3.jpg'%}" alt=""></a>
+         <a class="box" href="{% static 'images/g-img-9.jpg'%}"><img src="{% static 'images/g-img-9.jpg'%}" alt=""></a>
+
+      </div>
+
+   </section>
+
+   <!-- gallery section ends -->
+
+   <!-- reviews section starts  -->
+
+   <section class="swiper mySwiper">
+      <h1 class="heading" id="reviews">Customer <span>Reviews</span> </h1>
+      <div class="swiper-wrapper">
+
+         <div class="card swiper-slide">
+            <div class="card__image">
+               <img src="{{user.profile.image.url}}" alt="card image">
+            </div>
+            <form action="/reviews" method="post">
+               {% csrf_token %}
+               <div class="card__content">
+                  <span class="card__title">{{user.first_name}}
+                     {{user.last_name}}</span>
+                     {{rev.review_message}}
+                  <button type="submit" class="card__btn">Send</button>
+               </div>
+         </div>
+         </form>
+         {% for i in revs reversed %}
+         <div class="card swiper-slide">
+            {% if i.boss.username == user.username %}
+            <a href="{% url 'delete_reviews' i.id %}"><i class="fas fa-times" id="card_btn"></i></a>
+            {% endif %}
+            <div class="card__image">
+               <img src="{{i.boss.profile.image.url}}" alt="card image">
+            </div>
+            
+            <div class="card__content">
+               <span class="card__title">{{i.boss.first_name}} {{i.boss.last_name}}</span>
+               <!-- <span class="card__name">Vanessa Martinez</span> -->
+               <p class="card__text" width="10%">{{i.review_message}}</p>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </section>
+
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+   <!-- Initialize Swiper -->
+   <script>
+      var swiper = new Swiper(".mySwiper", {
+         effect: "coverflow",
+         grabCursor: true,
+         slidesPerView: "auto",
+         coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+         },
+         pagination: {
+            el: ".swiper-pagination",
+         },
+      });
+      document.getElementById('id_review_message').placeholder='Type Somthing...'
+   </script>
+   <!-- Reviews section ends -->
+
+   <!-- team section starts  -->
+
+   <section class="team" id="team">
+
+      <h1 class="heading"> our expert <span>team</span> </h1>
+
+      <div class="box-container">
+
+         <div class="box">
+            <img src="{% static 'img/my.jpg' %}" alt="shahul" height="250" width="100">
+            <div class="content">
+               <h3>shahul</h3>
+               <p>electronic expert</p>
+               <div class="share">
+                  <a href="#" class="fab fa-facebook-f"></a>
+                  <a href="https://web.whatsapp.com/" class="fab fa-whatsapp"></a>
+                  <a href="https://www.instagram.com/shahul.hameed22/" class="fab fa-instagram"></a>
+                  <a href="#" class="fab fa-linkedin"></a>
+               </div>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="{% static 'img/Shabaz.jpg' %}" alt="ashwaq" height="250" width="100">
+            <div class="content">
+               <h3>shabaz</h3>
+               <p>electronic expert</p>
+               <div class="share">
+                  <a href="#" class="fab fa-facebook-f"></a>
+                  <a href="https://web.whatsapp.com/" class="fab fa-whatsapp"></a>
+                  <a href="https://www.instagram.com/x_shabaz_x_/" class="fab fa-instagram"></a>
+                  <a href="#" class="fab fa-linkedin"></a>
+               </div>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="{% static 'img/Ashwaq.jpg' %}" alt="sheesh" height="250" width="100">
+            <div class="content">
+               <h3>ashwaq</h3>
+               <p>electronic expert</p>
+               <div class="share">
+                  <a href="#" class="fab fa-facebook-f"></a>
+                  <a href="https://web.whatsapp.com/" class="fab fa-whatsapp"></a>
+                  <a href="https://www.instagram.com/_.a_s_h_x.__/" class="fab fa-instagram"></a>
+                  <a href="#" class="fab fa-linkedin"></a>
+               </div>
+            </div>
+         </div>
+
+         <div class="box">
+            <img src="{% static 'img/pawan.jpg' %}" alt="pawan" height="250" width="100">
+            <div class="content">
+               <h3>pawan</h3>
+               <p>electronic expert</p>
+               <div class="share">
+                  <a href="#" class="fab fa-facebook-f"></a>
+                  <a href="https://web.whatsapp.com/" class="fab fa-whatsapp"></a>
+                  <a href="https://www.instagram.com/iampavangowda/" class="fab fa-instagram"></a>
+                  <a href="#" class="fab fa-linkedin"></a>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- team section ends -->
+
+   <section class="gap"></section>
+
+   <!-- contact section starts  -->
+
+   <section class="contact" id="contact">
+
+      <h1 class="heading"> <span>contact</span> us </h1>
+
+      <div class="row">
+         <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15554.88101764172!2d77.58283567375263!3d12.92569290417494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15a6d951e5ed%3A0x1e5663db26183807!2s4th%20T%20Block%20East%2C%20Pattabhirama%20Nagar%2C%20Jayanagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1657919791608!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+         <form action="#" method="post" onsubmit="mess()">
+            {% csrf_token %}
+            <h3>get in touch</h3>
+            <div class="inputBox">
+               {{form.name}}
+               {{form.email_ID}}
+            </div>
+            <div class="inputBox">
+               {{form.phone_number}}
+               {{form.subject}}
+            </div>
+            {{form.message}}
+            <input type="submit" value="send message" class="btn">
+         </form>
+
+      </div>
+
+   </section>
+
+   <!-- contact section ends -->
+
+   <!-- footer section starts  -->
+
+   <section class="footer">
+
+      <div class="box-container">
+
+         <div class="box">
+            <h3>quick links</h3>
+            <a class="link" href="#home"> <i class="fas fa-angle-right"></i> Home</a>
+            <a class="link" href="#about"> <i class="fas fa-angle-right"></i> About</a>
+            <a class="link" href="#services"> <i class="fas fa-angle-right"></i> Services</a>
+            <a class="link" href="#gallery"> <i class="fas fa-angle-right"></i> Gallery</a>
+            <a class="link" href="#reviews"> <i class="fas fa-angle-right"></i> Reviews</a>
+            <a class="link" href="#contact"> <i class="fas fa-angle-right"></i> Contact</a>
+         </div>
+
+         <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="link"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#" class="link"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#" class="link"> <i class="fas fa-envelope"></i> shahul66649@gmail.com </a>
+            <a href="#" class="link"> <i class="fas fa-map"></i> Bangalore, india - 400104 </a>
+         </div>
+
+         <div class="box">
+            <h3>newsletter</h3>
+            <p>Subscribe for latest updates</p>
+            <form action="/subscrib" method="post" onsubmit="subscribe()">
+               {% csrf_token %}
+               <input type="email" name="email" placeholder="Enter your email" class="email">
+               <input type="submit" value="subscribe" class="btn">
+            </form>
+            <div class="share">
+               <a href="#" class="fab fa-facebook-f"></a>
+               <a href="#" class="fab fa-twitter"></a>
+               <a href="#" class="fab fa-instagram"></a>
+               <a href="#" class="fab fa-linkedin"></a>
+            </div>
+         </div>
+
+      </div>
+
+      <div class="credit"> Login as <a href="/admin"><span>admin</span></a></div>
+
+   </section>
+
+   <!-- footer section ends -->
+
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+   <!-- custom js file link  -->
+   <script src="{% static 'js/scriptt.js'%}"></script>
+
+   <script>
+      lightGallery(document.querySelector('.gallery .gallery-container'));
+      function mess() {
+         alert("Your message has been sent!")
+      }
+      function subscribe() {
+         alert("You have subscribed to this website")
+      }
+
+      var form_fields = document.getElementsByTagName('input')
+      form_fields[1].placeholder = 'Name';
+      form_fields[2].placeholder = 'Email ID';
+      form_fields[3].placeholder = 'Phone Number';
+      form_fields[4].placeholder = 'Subject';
+      document.getElementById('id_message').placeholder = 'Message';
+   </script>
+
+</body>
+
+</html>

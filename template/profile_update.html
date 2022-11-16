@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- font awesome cdn link  -->
+    <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/reg.css'%}" />
+    <title>Electronics Service|Register</title>
+</head>
+
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="login">
+            {% if user.profile.image.url == "" %}
+            <img class="img" src="{% static 'img/default.png' %}">
+            {% else %}
+            <img class="img" src="{{user.profile.image.url}}">
+            {% endif %}
+            <div class="title">My Profile</div>
+            <div class="fields">
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        <td class="rg">: {{form.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                        <td class="rg">: {{form.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td class="rg">: {{form.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email ID</td>
+                        <td class="rg">: {{form.email}}</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 11rem; margin-top:1rem;"> {{p_form}}</div>
+            </div>
+            <div class="grid">
+                <input type="submit" class="signin-button" value="Update">
+            </div>
+    </form>
+    </div>
+    <style>
+        table {
+            font-size: 18px;
+            height: 150px;
+            margin-left: 2rem;
+            margin-top: -1rem;
+        }
+
+        .rg {
+            padding-left: 1rem;
+        }
+
+        .login {
+            width: 800px;
+            height: 550px;
+        }
+
+        .img {
+            margin-top: 1rem;
+            margin-left: 43%;
+        }
+
+        .title {
+            font-size: 2rem;
+            padding-top: 1px;
+        }
+
+        .signin-button {
+            margin-top: 1rem;
+            height: 45px;
+            width: 250px;
+            margin-left: 14rem;
+            font-size: 17px;
+        }
+
+
+        @media (max-width: 754px) {
+            html {
+                font-size: 60%;
+            }
+
+            .login {
+                width: 600px;
+                height: 450px;
+            }
+
+            .signin-button {
+                margin-top: 4rem;
+                height: 45px;
+                width: 250px;
+                margin-left: 28rem;
+                font-size: 17px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            html {
+                font-size: 50%;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            .login {
+                width: 400px;
+                height: 450px;
+            }
+
+            .title {
+                margin-left: 3.5rem;
+            }
+
+            .signin-button {
+                margin-top: 6rem;
+                height: 35px;
+                width: 200px;
+                margin-left: 8rem;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            html {
+                font-size: 50%;
+            }
+
+            table {
+                font-size: 10px;
+                margin-left: -20px;
+            }
+
+            .login {
+                width: 300px;
+                height: 430px;
+            }
+
+            .title {
+                margin-left: 1rem;
+            }
+
+            .signin-button {
+                margin-top: 3rem;
+                height: 35px;
+                width: 200px;
+                margin-left: 1rem;
+                font-size: 13px;
+            }
+
+            .img {
+                margin-top: 1rem;
+                margin-left: 33%;
+            }
+        }
+    </style>
+
+</body>
+
+</html>
