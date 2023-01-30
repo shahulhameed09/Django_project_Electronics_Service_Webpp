@@ -11,13 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
-
-#deploying on heroku
-import django_heroku
-import dj_database_url
-from decouple import config
-
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -62,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware', #google
-    'whitenoise.middleware.WhiteNoiseMiddleware',             #heroku
 ]
 
 ROOT_URLCONF = 'electronics.urls'
@@ -136,11 +128,6 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR,"static"),]
 
-#heroku 
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorge'
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -199,5 +186,3 @@ MEDIA_URL = '/media/'
 
 
 SITE_ID= 1
-
-django_heroku.settings(locals())
